@@ -1,61 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './App.css';
-import { TailSpin } from 'react-loader-spinner';
-import { inject } from '@vercel/analytics';
-
-const API_BASE_URL = 'https://cosmo-backend-api-b1c95546381e.herokuapp.com';
-
-inject();
+import MessageDisplay from './message/MessageDisplay';
+import MessageInput from './message/MessageInput';
+import { sendRequest } from './api';
 
 function App() {
-  const [message, setMessage] = useState('');
-  const [response, setResponse] = useState('');
+  const [response, setResponse] = useState({ data: '', error: '' });
   const [isLoading, setIsLoading] = useState(false);
 
   const sendMessage = async (text) => {
+    setIsLoading(true);
     try {
-      setMessage('');
-      setIsLoading(true);
-      const res = await axios.post(`${API_BASE_URL}/api/chat/request`, { prompt: text });
-      setResponse(res.data.response);
+      const res = await sendRequest(text);
+      setResponse({ data: res.data, error: '' });
     } catch (error) {
-      setResponse({ error: error.toString() });
+      setResponse({ data: '', error: error.toString() });
     } finally {
       setIsLoading(false);
     }
   };
-
-  const handleKeyDown = async (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      if (message.trim() !== '') {
-        await sendMessage(message);
-        setMessage('');
-      }
-    }
-  };
-
-  let responseContent = null;
-
-  if (isLoading) {
-    responseContent = (
-      <TailSpin
-        height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="tail-spin-loading"
-        radius="1"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible
-      />
-    );
-  } else if (typeof response === 'object') {
-    responseContent = <pre>{JSON.stringify(response, null, 2)}</pre>;
-  } else {
-    responseContent = <p>{response}</p>;
-  }
 
   return (
     <div className="App">
@@ -63,16 +26,8 @@ function App() {
         <h1>Cosmo Chat</h1>
       </header>
       <main className="App-main">
-        <div className="response-box">{responseContent}</div>
-        <div className="message-box">
-          <textarea
-            rows={4}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            onKeyDown={handleKeyDown}
-            placeholder="Type your message here..."
-          />
-        </div>
+        <MessageDisplay response={response} isLoading={isLoading} />
+        <MessageInput sendMessage={sendMessage} />
       </main>
     </div>
   );

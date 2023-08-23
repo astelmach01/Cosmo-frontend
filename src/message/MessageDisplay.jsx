@@ -1,5 +1,5 @@
 import React from 'react';
-import Loader from '../Loader';
+import Loader from "../Loader";
 
 function MessageDisplay({ response, isLoading }) {
   let content;
@@ -9,7 +9,7 @@ function MessageDisplay({ response, isLoading }) {
   } else if (response.error) {
     content = <p>{response.error}</p>;
   } else if (response.data) {
-    content = <pre>{JSON.stringify(response.data, null, 2)}</pre>;
+    content = <p>{response.data.response}</p>; // Display the response value
   } else {
     content = <p></p>;
   }

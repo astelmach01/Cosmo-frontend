@@ -2,7 +2,6 @@
 
 .App {
   text-align: center;
-  background-color: dimgrey;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,6 +23,16 @@
   align-items: center;
 }
 
+.blank-element {
+  flex-grow: 1; /* Make the blank element grow to occupy remaining space */
+  background-color: black;
+  background-image: url("../public/cosmo-background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+}
+
 .response-box,
 .message-box {
   width: 90%;
@@ -31,10 +40,11 @@
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f8f8f8;
+  background-color: rgba(248, 248, 248, 0.8); /* Adjust the alpha (0.8) for transparency */
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: #333; /* Set a suitable text color for black background */
 }
 
 .message-input {
@@ -52,13 +62,15 @@
   border-radius: 3px;
   resize: none; /* Disable textarea resizing */
   outline: none;
+  font-family: 'Arial', sans-serif;
+  font-size: 20px;
 }
 
 .submit-button {
   width: 60px;
   padding: 8px 10px;
-  background-color: #4fa94d;
-  color: white;
+  background-color: #6b38fb; /* Light purple background color for contrast */
+  color: white; /* White text color for readability */
   border: none;
   border-radius: 3px;
   cursor: pointer;
@@ -66,10 +78,8 @@
 }
 
 .submit-button:hover {
-  background-color: #3c853d;
+  background-color: #4a1c9f; /* Darker purple color on hover for feedback */
 }
-
-
 
 pre {
   white-space: pre-wrap;

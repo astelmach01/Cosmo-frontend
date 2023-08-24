@@ -28,7 +28,7 @@ function MessageInput({ sendMessage }) {
             placeholder="Type your message here..."
         />
           <button onClick={handleSubmit} className="submit-button">
-            Submit
+            Enter
           </button>
         </div>
       </div>

@@ -23,8 +23,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Cosmo Chat</h1>
+        <h1>Cosmo 🛸</h1>
       </header>
+      <div className="blank-element"></div>
       <main className="App-main">
         <MessageDisplay response={response} isLoading={isLoading} />
         <MessageInput sendMessage={sendMessage} />

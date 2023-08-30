@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 
-let API_BASE_URL = 'http://localhost:8000';
-// let API_BASE_URL = 'cosmo-backend-api-b1c95546381e.herokuapp.com';
+// let API_BASE_URL = 'http://localhost:8000';
+let API_BASE_URL = 'cosmo-backend-api-b1c95546381e.herokuapp.com';
 
 // Existing imports and code
 // Existing imports and code

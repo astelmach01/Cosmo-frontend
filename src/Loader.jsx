@@ -6,7 +6,7 @@ function Loader() {
     <TailSpin
       height={80}
       width={80}
-      color="#4fa94d"
+      color= "#6b38fb"
       ariaLabel="tail-spin-loading"
       radius={1}
       wrapperStyle={{}}

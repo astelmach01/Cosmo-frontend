@@ -11,7 +11,7 @@
 .todo-item {
     display: flex;
     justify-content: space-between;
-    align-items: center;  /* Align items vertically */
+    align-items: flex-start;  /* Align items vertically */
     flex-wrap: nowrap;  /* Prevent wraparound */
     padding: 10px;
     margin: 5px 0;

@@ -20,6 +20,7 @@
   width: 100%; /* Take up the full width */
   display: flex;
   flex-direction: column;
+  justify-content: space-between; /* Add this to push the footer to the bottom */
   align-items: center;
 }
 
@@ -47,12 +48,16 @@
   color: #333; /* Set a suitable text color for black background */
 }
 
+.message-display, .message-input {
+  width: 100%;  /* Set the same width for both */
+}
+
 .message-input {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 
 .message-input textarea {
   width: calc(100% - 70px);

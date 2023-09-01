@@ -4,8 +4,10 @@ let API_BASE_URL = 'https://cosmo-backend-api-b1c95546381e.herokuapp.com';
 
 
 export const getUserTasks = async (userId) => {
+    console.log("userId", userId);
     try {
         const res = await axios.get(`${API_BASE_URL}/api/tasks/get_user_tasks/${userId}`);
+        console.log("res", res);
         if (res.data.success) {
             return { success: true, tasks: res.data.tasks };
         } else {

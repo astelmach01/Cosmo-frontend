@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import MessageDisplay from './message/MessageDisplay';
-import MessageInput from './message/MessageInput';
-import ToDoList from './ToDoList';  // Import the ToDoList component
-import { sendRequest, getUserTasks } from './api';
+import ToDoList from './ToDoList';
+import { sendRequest, getUserTasks, createTask } from './api';
+import MessageInput from "./message/MessageInput";
+import MessageDisplay from "./message/MessageDisplay";
 
-const userId = "Andrew Stelmach"
+const userId = 2;
 
 function App() {
     const [response, setResponse] = useState({ data: '', error: '' });
@@ -13,7 +13,6 @@ function App() {
     const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
     const [taskError, setTaskError] = useState('');
     const [hasFetchedTasks, setHasFetchedTasks] = useState(false);
-
 
     const fetchTasks = async () => {
         const res = await getUserTasks(userId);
@@ -23,6 +22,11 @@ function App() {
         } else {
             setTaskError(res.error);
         }
+    };
+
+    const addNewTask = async (taskData) => {
+        await createTask(userId, taskData);
+        fetchTasks();
     };
 
     const sendMessage = async (text) => {
@@ -37,10 +41,9 @@ function App() {
         }
     };
 
-
     useEffect(() => {
         if (!hasFetchedTasks) {
-            fetchTasks().then(r => console.log(r));
+            fetchTasks();
             setHasFetchedTasks(true);
         }
     }, [hasFetchedTasks]);
@@ -52,7 +55,7 @@ function App() {
             </header>
             <div className="blank-element"></div>
             <main className="App-main">
-                <ToDoList tasks={tasks} error={taskError} />
+                <ToDoList tasks={tasks} error={taskError} refreshTasks={fetchTasks} />
                 <div className="message-display">
                     <MessageDisplay response={response} isLoading={isLoading} />
                 </div>
@@ -60,6 +63,7 @@ function App() {
             </main>
         </div>
     );
+
 }
 
 export default App;

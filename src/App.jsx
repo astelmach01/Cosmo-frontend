@@ -10,15 +10,15 @@ const userId = 2;
 function App() {
     const [response, setResponse] = useState({ data: '', error: '' });
     const [isLoading, setIsLoading] = useState(false);
-    const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
+    const [tasks, setTasks] = useState( []);
     const [taskError, setTaskError] = useState('');
     const [hasFetchedTasks, setHasFetchedTasks] = useState(false);
 
     const fetchTasks = async () => {
+        console.log("Fetching tasks")
         const res = await getUserTasks(userId);
         if (res.success) {
             setTasks(res.tasks);
-            localStorage.setItem('tasks', JSON.stringify(res.tasks));
         } else {
             setTaskError(res.error);
         }
@@ -42,11 +42,9 @@ function App() {
     };
 
     useEffect(() => {
-        if (!hasFetchedTasks) {
-            fetchTasks();
-            setHasFetchedTasks(true);
-        }
-    }, [hasFetchedTasks]);
+        console.log("Fetching tasks from useEffect");
+        fetchTasks();
+    }, []);
 
     return (
         <div className="App">

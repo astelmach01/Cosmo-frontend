@@ -2,6 +2,10 @@
 import axios from 'axios';
 let API_BASE_URL = 'https://cosmo-backend-api-b1c95546381e.herokuapp.com';
 
+axios.interceptors.request.use((config) => {
+    config.url = `${config.url}?_=${new Date().getTime()}`;
+    return config;
+});
 
 export const getUserTasks = async (userId) => {
     try {

@@ -16,7 +16,7 @@ function ToDoList({ tasks, error, refreshTasks }) {
         try {
             await deleteUserTask(taskId);
             console.log("refreshing tasks from handleDelete");
-            refreshTasks();
+            await refreshTasks();
         } catch (err) {
             console.error(err);
         }
@@ -32,9 +32,9 @@ function ToDoList({ tasks, error, refreshTasks }) {
                 payload.date = updatedDate;
             }
             console.log("Sending payload", payload);
-            await updateUserTask(taskId, payload);
-            console.log("refreshing tasks from handleUpdate");
-            refreshTasks();
+            const res = await updateUserTask(taskId, payload);
+            console.log("refreshing tasks from handleUpdate with response", res);
+            await refreshTasks();
         } catch (err) {
             console.error(err);
         }
@@ -46,9 +46,10 @@ function ToDoList({ tasks, error, refreshTasks }) {
                 description: newTask,
                 date: newDate
             };
+            console.log("Sending payload", payload);
             await createTask(userId, payload);  // Replace with your actual API call
             console.log("refreshing tasks from handleCreate");
-            refreshTasks();
+            await refreshTasks();
         } catch (err) {
             console.error(err);
         }

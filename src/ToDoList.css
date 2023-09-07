@@ -1,5 +1,5 @@
 .todo-list {
-    width: 30%;
+    width: 75%;
     margin: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -10,9 +10,9 @@
 
 .todo-item {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;  /* Align items vertically */
-    flex-wrap: nowrap;  /* Prevent wraparound */
     padding: 10px;
     margin: 5px 0;
     border-radius: 5px;
@@ -26,7 +26,7 @@
 
 .task {
     font-weight: bold;
-    min-width: 60%;  /* Adjust as needed */
+    min-width: 50%;  /* Adjust as needed */
     text-align: left;
 }
 
@@ -45,4 +45,45 @@
 .todo-list.ul {
     list-style-type: none;
     padding: 0;
+}
+
+/* Input field styling */
+.todo-input {
+    padding: 6px;
+    margin: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: calc(50% - 8px);  /* Adjust as needed */
+}
+
+/* Common button styling */
+.todo-button {
+    padding: 8px 16px;
+    margin: 4px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.todo-button:hover {
+    opacity: 0.8;
+}
+
+/* Delete button */
+.delete-button {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+/* Update button */
+.update-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Create button */
+.create-button {
+    background-color: #008CBA;
+    color: white;
 }

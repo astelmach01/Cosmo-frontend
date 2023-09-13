@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import './ToDoList.css';
 import {updateUserTask, deleteUserTask, createTask} from './api';
 
-const userId = 2;
-
 function ToDoList({ tasks, error, refreshTasks }) {
     const [updatedTask, setUpdatedTask] = useState('');
     const [updatedDate, setUpdatedDate] = useState('');
@@ -47,7 +45,7 @@ function ToDoList({ tasks, error, refreshTasks }) {
                 date: newDate
             };
             console.log("Sending payload", payload);
-            await createTask(userId, payload);  // Replace with your actual API call
+            await createTask(payload);  // Replace with your actual API call
             console.log("refreshing tasks from handleCreate");
             await refreshTasks();
         } catch (err) {

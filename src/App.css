@@ -89,3 +89,47 @@
 pre {
   white-space: pre-wrap;
 }
+
+
+/* Style for the login input fields */
+.login-input {
+  width: 70%;
+  padding: 5px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Style for the login button */
+.login-button {
+  width: 70%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #6b38fb; /* Light purple background color for contrast */
+  color: white; /* White text color for readability */
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #4a1c9f; /* Darker purple color on hover for feedback */
+}
+
+
+/* Container for both login and sign-up forms */
+.forms-container {
+  display: flex;
+  justify-content: flex-end; /* Align to the side of the page */
+  gap: 20px; /* Space between login and sign-up forms */
+}
+
+/* Individual form container */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between input fields and buttons */
+}

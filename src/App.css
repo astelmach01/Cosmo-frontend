@@ -27,7 +27,7 @@
 .blank-element {
   flex-grow: 1; /* Make the blank element grow to occupy remaining space */
   background-color: black;
-  background-image: url("../public/cosmo-background.png");
+  background-image: url("../public/cosmo_-transformed.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
